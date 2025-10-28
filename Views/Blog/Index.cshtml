@@ -1,0 +1,14 @@
+@{
+    ViewData["Title"] = "Blog";
+}
+@await Html.PartialAsync("_Hero", new WebNhaHang.Models.HeroViewModel{ Title = "BLOG", Subtitle = "Tin tức và câu chuyện" })
+
+<div class="container my-4">
+    <div class="row row-cols-1 row-cols-md-3 g-3 mt-1">
+        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Image"},{"CardTitle","Related Post 1"},{"Meta","15 tháng 9, 2022"},{"Url", Url.Action("Detail","Blog", new { id = 1 })} })</div>
+        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Image"},{"CardTitle","Related Post 2"},{"Meta","14 tháng 9, 2022"},{"Url", Url.Action("Detail","Blog", new { id = 2 })} })</div>
+        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Image"},{"CardTitle","Related Post 3"},{"Meta","13 tháng 9, 2022"},{"Url", Url.Action("Detail","Blog", new { id = 3 })} })</div>
+    </div>
+</div>
+
+

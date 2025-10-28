@@ -1,0 +1,36 @@
+@* Generic card partial. Use ViewData or ViewBag to pass fields quickly. *@
+@{
+    var imageText = (string?)ViewData["ImageText"] ?? "Image";
+    var title = (string?)ViewData["CardTitle"] ?? (string?)ViewData["Title"] ?? "Title";
+    var description = (string?)ViewData["Description"];
+    var meta = (string?)ViewData["Meta"];
+    var price = (string?)ViewData["Price"];
+    var url = (string?)ViewData["Url"];
+}
+
+<div class="card shadow-sm border-0 h-100 group">
+    <div class="bg-secondary-subtle d-flex align-items-center justify-content-center overflow-hidden" style="height:200px; color:#777;">
+        @imageText
+    </div>
+    <div class="card-body">
+        <div class="fw-semibold transition-transform group-hover:translate-y-[-2px]">@title</div>
+        @if (!string.IsNullOrWhiteSpace(description))
+        {
+            <div class="text-muted small mt-1">@description</div>
+        }
+        @if (!string.IsNullOrWhiteSpace(meta))
+        {
+            <div class="text-secondary small mt-2">@meta</div>
+        }
+        @if (!string.IsNullOrWhiteSpace(price))
+        {
+            <div class="text-danger fw-bold mt-2">@price</div>
+        }
+        @if (!string.IsNullOrWhiteSpace(url))
+        {
+            <a class="stretched-link" href="@url" aria-label="Open"></a>
+        }
+    </div>
+    </div>
+
+

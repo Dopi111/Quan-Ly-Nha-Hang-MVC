@@ -1,0 +1,56 @@
+@{
+    ViewData["Title"] = "Contact";
+}
+@await Html.PartialAsync("_Hero", new WebNhaHang.Models.HeroViewModel{ Title = "CONTACT US", Subtitle = "Liên hệ với chúng tôi" })
+
+<div class="container my-4">
+    <div class="row g-4">
+        <div class="col-md-6">
+            <h2 class="border-bottom pb-2" style="color:#1a3a52;">SEND US A MESSAGE</h2>
+            <form>
+                <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input class="form-control" type="text" placeholder="Your name" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input class="form-control" type="email" placeholder="your@email.com" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Phone</label>
+                    <input class="form-control" type="tel" placeholder="Your phone number" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Subject</label>
+                    <input class="form-control" type="text" placeholder="Message subject" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-control" rows="5" placeholder="Your message"></textarea>
+                </div>
+                <button class="btn btn-danger">Send Message</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h2 class="border-bottom pb-2" style="color:#1a3a52;">CONTACT INFORMATION</h2>
+            <div class="p-3 rounded mb-3" style="background:#f9f9f9;">
+                <h5 class="text-danger mb-2">Cocotte Sila</h5>
+                <div class="small mb-1">📍 Địa chỉ đầy đủ</div>
+                <div class="small mb-1">📞 0902911227</div>
+                <div class="small">⏰ 8:30am - 10:00pm</div>
+            </div>
+            <div class="p-3 rounded mb-3" style="background:#f9f9f9;">
+                <h5 class="text-danger mb-2">Cocotte Ben Thanh</h5>
+                <div class="small mb-1">📍 Địa chỉ đầy đủ</div>
+                <div class="small mb-1">📞 0902911227</div>
+                <div class="small">⏰ 10:00am - 10:00pm</div>
+            </div>
+            <div class="p-3 rounded" style="background:#f9f9f9;">
+                <h5 class="text-danger mb-2">Email</h5>
+                <div class="small">booking@cocotte.asia</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

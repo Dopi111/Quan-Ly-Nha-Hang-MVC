@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Event Detail";
+}
+<div class="container my-4">
+    <a asp-action="Index" class="text-danger text-decoration-none">&larr; Back to Events</a>
+    <div class="row g-4 mt-1 align-items-start">
+        <div class="col-md-6">
+            <div class="bg-secondary-subtle d-flex align-items-center justify-content-center" style="height:400px;">Event Image</div>
+        </div>
+        <div class="col-md-6">
+            <h1 class="h2 mb-3">Event Name</h1>
+            <div class="p-4 rounded text-white" style="background:#c41e3a;">
+                <h5 class="mb-3">Event Details</h5>
+                <div class="mb-1">📅 Date: 15 tháng 9, 2022</div>
+                <div class="mb-1">⏰ Time: 18:00 - 22:00</div>
+                <div class="mb-1">📍 Location: Cocotte Sila</div>
+                <div class="mb-1">👥 Capacity: 50 guests</div>
+                <div>💰 Price: 500,000đ per person</div>
+            </div>
+            <button class="btn btn-danger w-100 mt-3">Register for Event</button>
+        </div>
+    </div>
+
+    <div class="rounded mt-4 p-4" style="background:#f9f9f9;">
+        <h4 class="mb-2">About This Event</h4>
+        <p class="mb-2" style="line-height:1.8;">Mô tả chi tiết về sự kiện, bao gồm những gì sẽ diễn ra, ai sẽ tham gia, và những điểm nổi bật của sự kiện.</p>
+        <p class="mb-0" style="line-height:1.8;">Thêm thông tin về menu, các hoạt động, và những trải nghiệm đặc biệt mà khách sẽ nhận được.</p>
+    </div>
+
+    <h2 class="mt-5 border-bottom pb-2" style="color:#1a3a52;">EVENT GALLERY</h2>
+    <div class="row row-cols-2 row-cols-md-4 g-3 mt-1">
+        <div class="col"><div class="bg-secondary-subtle d-flex align-items-center justify-content-center" style="height:150px;">Photo 1</div></div>
+        <div class="col"><div class="bg-secondary-subtle d-flex align-items-center justify-content-center" style="height:150px;">Photo 2</div></div>
+        <div class="col"><div class="bg-secondary-subtle d-flex align-items-center justify-content-center" style="height:150px;">Photo 3</div></div>
+        <div class="col"><div class="bg-secondary-subtle d-flex align-items-center justify-content-center" style="height:150px;">Photo 4</div></div>
+    </div>
+
+    <h2 class="mt-5 border-bottom pb-2" style="color:#1a3a52;">OTHER EVENTS</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-3 mt-1">
+        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Image"},{"CardTitle","Event 1"},{"Meta","📅 20 tháng 9, 2022"} })</div>
+        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Image"},{"CardTitle","Event 2"},{"Meta","📅 25 tháng 9, 2022"} })</div>
+        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Image"},{"CardTitle","Event 3"},{"Meta","📅 30 tháng 9, 2022"} })</div>
+    </div>
+</div>
+
+

@@ -1,0 +1,49 @@
+@{
+    ViewData["Title"] = "Our Story";
+}
+@await Html.PartialAsync("_Hero", new WebNhaHang.Models.HeroViewModel{ Title = "OUR STORY", Subtitle = "Hành trình của Cocotte" })
+
+<div class="container my-4">
+    <h2 class="border-bottom pb-2" style="color:#1a3a52;">ABOUT COCOTTE</h2>
+    <div class="row g-4 align-items-center">
+        <div class="col-md-6">
+            <div class="bg-secondary-subtle d-flex align-items-center justify-content-center" style="height:300px;">About Image</div>
+        </div>
+        <div class="col-md-6">
+            <p class="mb-3" style="line-height:1.8;">Nơi hương vị Pháp được gìn giữ, sáng tạo và phục vụ bằng cả đam mê...</p>
+            <p style="line-height:1.8;">Cocotte là một nhà hàng Pháp chuyên phục vụ các món ăn truyền thống Pháp với chất lượng cao nhất.</p>
+        </div>
+    </div>
+
+    <h2 class="mt-5 border-bottom pb-2" style="color:#1a3a52;">OUR VALUES</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-3 mt-1">
+        <div class="col">
+            <div class="p-3 rounded" style="background:#f9f9f9;">
+                <h5 class="text-danger">Quality</h5>
+                <div class="small">Chúng tôi sử dụng nguyên liệu tốt nhất từ Pháp và địa phương.</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="p-3 rounded" style="background:#f9f9f9;">
+                <h5 class="text-danger">Tradition</h5>
+                <div class="small">Giữ gìn những công thức nấu ăn truyền thống Pháp.</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="p-3 rounded" style="background:#f9f9f9;">
+                <h5 class="text-danger">Experience</h5>
+                <div class="small">Tạo ra những trải nghiệm ẩm thực không quên.</div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="mt-5 border-bottom pb-2" style="color:#1a3a52;">OUR TEAM</h2>
+    <div class="row row-cols-1 row-cols-md-4 g-3 mt-1">
+        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Team Member"},{"CardTitle","Chef Name"},{"Description","Head Chef"} })</div>
+        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Team Member"},{"CardTitle","Staff Name"},{"Description","Sous Chef"} })</div>
+        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Team Member"},{"CardTitle","Staff Name"},{"Description","Manager"} })</div>
+        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Team Member"},{"CardTitle","Staff Name"},{"Description","Sommelier"} })</div>
+    </div>
+</div>
+
+

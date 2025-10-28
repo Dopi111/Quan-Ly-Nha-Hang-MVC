@@ -1,0 +1,29 @@
+@{
+    ViewData["Title"] = "Blog Detail";
+}
+<div class="container my-4">
+    <a asp-action="Index" class="text-danger text-decoration-none">&larr; Back to Blog</a>
+    <h1 class="display-6 mt-2">Blog Post Title</h1>
+    <div class="text-secondary mb-3">15 tháng 9, 2022 • 1 phút đọc</div>
+    <div class="bg-secondary-subtle d-flex align-items-center justify-content-center mb-3" style="height:400px;">Featured Image</div>
+    <div class="mx-auto" style="max-width:800px; line-height:1.8; font-size:16px;">
+        <p class="mb-3">Đây là đoạn mở đầu của bài blog post. Nó cung cấp thông tin tổng quan về chủ đề mà bài viết sẽ đề cập đến.</p>
+        <h2 class="h4 mt-4 mb-2">Section Heading</h2>
+        <p class="mb-3">Nội dung chi tiết của phần này. Có thể bao gồm nhiều đoạn văn, hình ảnh, và thông tin liên quan.</p>
+        <h2 class="h4 mt-4 mb-2">Another Section</h2>
+        <p class="mb-3">Tiếp tục nội dung bài viết với các thông tin bổ sung và chi tiết hơn.</p>
+    </div>
+    <div class="mt-4 pt-3 border-top d-flex justify-content-between align-items-center">
+        <div class="text-secondary">👁️ 45 views <span class="ms-3">💬 0 comments</span></div>
+        <button class="btn btn-danger btn-sm">❤️ Like</button>
+    </div>
+
+    <h2 class="mt-5 border-bottom pb-2" style="color:#1a3a52;">RELATED POSTS</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-3 mt-1">
+        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Image"},{"CardTitle","Related Post 1"},{"Meta","15 tháng 9, 2022"} })</div>
+        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Image"},{"CardTitle","Related Post 2"},{"Meta","14 tháng 9, 2022"} })</div>
+        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Image"},{"CardTitle","Related Post 3"},{"Meta","13 tháng 9, 2022"} })</div>
+    </div>
+</div>
+
+

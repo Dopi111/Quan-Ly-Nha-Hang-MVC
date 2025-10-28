@@ -1,0 +1,15 @@
+@{
+    ViewData["Title"] = "Menu";
+}
+@await Html.PartialAsync("_Hero", new WebNhaHang.Models.HeroViewModel{ Title = "MENU", Subtitle = "Featured Dishes" })
+
+<div class="container my-4">
+    <h2 class="border-bottom pb-2" style="color:#1a3a52;">FEATURED DISHES</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-3 mt-1">
+        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Image 1"},{"CardTitle","Dish Name"},{"Price","88,000đ"},{"Url",Url.Action("Detail","Menu", new { id = 1 })} })</div>
+        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Image 2"},{"CardTitle","Dish Name"},{"Price","136,000đ"},{"Url",Url.Action("Detail","Menu", new { id = 2 })} })</div>
+        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Image 3"},{"CardTitle","Dish Name"},{"Price","88,000đ"},{"Url",Url.Action("Detail","Menu", new { id = 3 })} })</div>
+    </div>
+</div>
+
+

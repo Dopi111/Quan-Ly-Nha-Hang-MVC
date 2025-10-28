@@ -1,13 +1,47 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
-<h1>
-    Test commit dau tien
-</h1>
-<h2>
-    hello con cho 
-</h2>
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p> <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@await Html.PartialAsync("_Hero", new WebNhaHang.Models.HeroViewModel{ Title = "ĂM THỰC PHÁP NGUYÊN BẢN", Subtitle = "Giữa lòng Sài Gòn" })
+
+<div class="container my-4">
+    <h2 class="border-bottom pb-2" style="color:#1a3a52;">FEATURED DISHES</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-3 mt-1">
+        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Image 1"},{"CardTitle","Dish Name"},{"Price","88,000đ"} })</div>
+        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Image 2"},{"CardTitle","Dish Name"},{"Price","136,000đ"} })</div>
+        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Image 3"},{"CardTitle","Dish Name"},{"Price","88,000đ"} })</div>
+    </div>
+
+    <h2 class="mt-5 border-bottom pb-2" style="color:#1a3a52;">COCOTTE'S MOMENTS</h2>
+    <div class="row row-cols-2 row-cols-md-4 g-3 mt-1">
+        <div class="col"><div class="bg-secondary-subtle d-flex align-items-center justify-content-center" style="height:200px;">Image</div></div>
+        <div class="col"><div class="bg-secondary-subtle d-flex align-items-center justify-content-center" style="height:200px;">Image</div></div>
+        <div class="col"><div class="bg-secondary-subtle d-flex align-items-center justify-content-center" style="height:200px;">Image</div></div>
+        <div class="col"><div class="bg-secondary-subtle d-flex align-items-center justify-content-center" style="height:200px;">Image</div></div>
+    </div>
+
+    <h2 class="mt-5 border-bottom pb-2" style="color:#1a3a52;">OUR LOCATIONS</h2>
+    <div class="row g-3 mt-1">
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="bg-secondary-subtle d-flex align-items-center justify-content-center" style="height:200px;">Location Image</div>
+                <div class="card-body">
+                    <div class="fw-semibold">Cocotte Sila</div>
+                    <div class="small text-muted">📍 Địa chỉ</div>
+                    <div class="small text-muted">⏰ 8:30am - 10:00pm</div>
+                    <div class="small text-muted">📞 Số điện thoại</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="bg-secondary-subtle d-flex align-items-center justify-content-center" style="height:200px;">Location Image</div>
+                <div class="card-body">
+                    <div class="fw-semibold">Cocotte Ben Thanh</div>
+                    <div class="small text-muted">📍 Địa chỉ</div>
+                    <div class="small text-muted">⏰ 10:00am - 10:00pm</div>
+                    <div class="small text-muted">📞 Số điện thoại</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

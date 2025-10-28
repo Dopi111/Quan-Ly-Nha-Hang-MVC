@@ -20,3 +20,9 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+/* Simple helpers to emulate wireframe look */
+.header .logo { color: #1a3a52; }
+.footer a { color: #ccc; }
+.footer h6 { font-size: 14px; }
+.footer .text-light-50 { color: #cccccc !important; font-size: 12px; }
