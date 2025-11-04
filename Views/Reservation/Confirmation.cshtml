@@ -1,0 +1,126 @@
+@model WebNhaHang.Models.Reservation
+
+@{
+    ViewData["Title"] = "Xác Nhận Đặt Bàn";
+}
+
+<div class="container mx-auto px-4 py-16">
+    <div class="max-w-2xl mx-auto">
+        <!-- Success Icon -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-4">
+                <svg class="w-12 h-12 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+            </div>
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">Đặt Bàn Thành Công!</h1>
+            <p class="text-gray-600">Cảm ơn bạn đã đặt bàn tại COCÔTTE</p>
+        </div>
+
+        <!-- Reservation Details -->
+        <div class="bg-white rounded-lg shadow-lg p-8 mb-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-4 border-b">Chi Tiết Đặt Bàn</h2>
+
+            <div class="space-y-4">
+                <div class="flex justify-between">
+                    <span class="text-gray-600 font-semibold">Mã đặt bàn:</span>
+                    <span class="text-gray-800 font-bold">#RES@Model.Id.ToString("D6")</span>
+                </div>
+
+                <div class="flex justify-between">
+                    <span class="text-gray-600 font-semibold">Tên khách hàng:</span>
+                    <span class="text-gray-800">@Model.CustomerName</span>
+                </div>
+
+                <div class="flex justify-between">
+                    <span class="text-gray-600 font-semibold">Email:</span>
+                    <span class="text-gray-800">@Model.CustomerEmail</span>
+                </div>
+
+                <div class="flex justify-between">
+                    <span class="text-gray-600 font-semibold">Số điện thoại:</span>
+                    <span class="text-gray-800">@Model.CustomerPhone</span>
+                </div>
+
+                <div class="flex justify-between">
+                    <span class="text-gray-600 font-semibold">Ngày:</span>
+                    <span class="text-gray-800">@Model.ReservationDate.ToString("dd/MM/yyyy")</span>
+                </div>
+
+                <div class="flex justify-between">
+                    <span class="text-gray-600 font-semibold">Giờ:</span>
+                    <span class="text-gray-800">@Model.ReservationTime.ToString(@"hh\:mm")</span>
+                </div>
+
+                <div class="flex justify-between">
+                    <span class="text-gray-600 font-semibold">Số người:</span>
+                    <span class="text-gray-800">@Model.NumberOfGuests người</span>
+                </div>
+
+                @if (Model.Location != null)
+                {
+                    <div class="flex justify-between">
+                        <span class="text-gray-600 font-semibold">Chi nhánh:</span>
+                        <span class="text-gray-800">@Model.Location.Name</span>
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(Model.SpecialRequests))
+                {
+                    <div class="pt-4 border-t">
+                        <span class="text-gray-600 font-semibold block mb-2">Yêu cầu đặc biệt:</span>
+                        <p class="text-gray-800 bg-gray-50 p-3 rounded">@Model.SpecialRequests</p>
+                    </div>
+                }
+
+                <div class="flex justify-between pt-4 border-t">
+                    <span class="text-gray-600 font-semibold">Trạng thái:</span>
+                    <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold">
+                        Chờ xác nhận
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">📧 Các Bước Tiếp Theo</h3>
+            <ol class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                    <span class="font-bold text-blue-500 mr-3">1.</span>
+                    <span>Chúng tôi đã gửi email xác nhận đến <strong>@Model.CustomerEmail</strong></span>
+                </li>
+                <li class="flex items-start">
+                    <span class="font-bold text-blue-500 mr-3">2.</span>
+                    <span>Nhân viên sẽ liên hệ với bạn trong vòng 24 giờ để xác nhận đặt bàn</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="font-bold text-blue-500 mr-3">3.</span>
+                    <span>Vui lòng đến đúng giờ để đảm bảo trải nghiệm tốt nhất</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="font-bold text-blue-500 mr-3">4.</span>
+                    <span>Nếu cần thay đổi, vui lòng liên hệ trước ít nhất 4 giờ</span>
+                </li>
+            </ol>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex gap-4">
+            <a asp-controller="Home" asp-action="Index" class="flex-1 bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition text-center font-semibold">
+                Về Trang Chủ
+            </a>
+            <a asp-controller="Menu" asp-action="Index" class="flex-1 bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition text-center font-semibold">
+                Xem Thực Đơn
+            </a>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="mt-6 text-center text-gray-600">
+            <p>Cần hỗ trợ? Liên hệ với chúng tôi:</p>
+            <p class="font-semibold text-gray-800 mt-2">
+                📞 (028) 3825 1234 | 📧 info@cocotte.vn
+            </p>
+        </div>
+    </div>
+</div>

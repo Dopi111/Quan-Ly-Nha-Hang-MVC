@@ -1,0 +1,200 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-8">
+        <div>
+            <h1 class="text-4xl font-bold text-gray-800">Admin Dashboard</h1>
+            <p class="text-gray-600">Chào mừng đến với trang quản trị COCÔTTE</p>
+        </div>
+        <form asp-action="Logout" method="post">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">
+                Đăng Xuất
+            </button>
+        </form>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <!-- Total Orders -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-500 text-sm mb-1">Tổng Đơn Hàng</p>
+                    <p class="text-3xl font-bold text-gray-800">@ViewBag.TotalOrders</p>
+                    <p class="text-green-500 text-sm mt-1">+12% từ tháng trước</p>
+                </div>
+                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                    <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Reservations -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-500 text-sm mb-1">Đặt Bàn</p>
+                    <p class="text-3xl font-bold text-gray-800">@ViewBag.TotalReservations</p>
+                    <p class="text-green-500 text-sm mt-1">+8% từ tháng trước</p>
+                </div>
+                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                    <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Revenue -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-500 text-sm mb-1">Doanh Thu</p>
+                    <p class="text-3xl font-bold text-gray-800">@ViewBag.TotalRevenue.ToString("#,##0")đ</p>
+                    <p class="text-green-500 text-sm mt-1">+15% từ tháng trước</p>
+                </div>
+                <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+                    <svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Today's Orders -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-500 text-sm mb-1">Đơn Hôm Nay</p>
+                    <p class="text-3xl font-bold text-gray-800">@ViewBag.TodayOrders</p>
+                    <p class="text-orange-500 text-sm mt-1">Đang xử lý: 3</p>
+                </div>
+                <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                    <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Quản Lý Nhanh</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <a asp-action="ManageMenu" class="flex flex-col items-center justify-center p-6 border border-gray-200 rounded-lg hover:bg-orange-50 hover:border-orange-300 transition">
+                <svg class="w-10 h-10 text-orange-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                </svg>
+                <span class="text-sm font-semibold text-gray-700">Thực Đơn</span>
+            </a>
+
+            <a asp-action="ManageOrders" class="flex flex-col items-center justify-center p-6 border border-gray-200 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition">
+                <svg class="w-10 h-10 text-blue-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                </svg>
+                <span class="text-sm font-semibold text-gray-700">Đơn Hàng</span>
+            </a>
+
+            <a asp-action="ManageReservations" class="flex flex-col items-center justify-center p-6 border border-gray-200 rounded-lg hover:bg-green-50 hover:border-green-300 transition">
+                <svg class="w-10 h-10 text-green-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+                <span class="text-sm font-semibold text-gray-700">Đặt Bàn</span>
+            </a>
+
+            <a asp-action="ManageBlogs" class="flex flex-col items-center justify-center p-6 border border-gray-200 rounded-lg hover:bg-purple-50 hover:border-purple-300 transition">
+                <svg class="w-10 h-10 text-purple-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                </svg>
+                <span class="text-sm font-semibold text-gray-700">Blog</span>
+            </a>
+
+            <a asp-action="ManageEvents" class="flex flex-col items-center justify-center p-6 border border-gray-200 rounded-lg hover:bg-pink-50 hover:border-pink-300 transition">
+                <svg class="w-10 h-10 text-pink-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z"/>
+                </svg>
+                <span class="text-sm font-semibold text-gray-700">Sự Kiện</span>
+            </a>
+
+            <a asp-controller="Locations" asp-action="Index" class="flex flex-col items-center justify-center p-6 border border-gray-200 rounded-lg hover:bg-red-50 hover:border-red-300 transition">
+                <svg class="w-10 h-10 text-red-500 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                <span class="text-sm font-semibold text-gray-700">Chi Nhánh</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Recent Orders -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Đơn Hàng Mới</h3>
+            <div class="space-y-3">
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                    <div class="flex-1">
+                        <p class="font-semibold text-gray-800">#ORD1234567890</p>
+                        <p class="text-sm text-gray-600">Nguyễn Văn A - 730,000đ</p>
+                    </div>
+                    <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-semibold">Pending</span>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                    <div class="flex-1">
+                        <p class="font-semibold text-gray-800">#ORD1234567889</p>
+                        <p class="text-sm text-gray-600">Trần Thị B - 550,000đ</p>
+                    </div>
+                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-semibold">Processing</span>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                    <div class="flex-1">
+                        <p class="font-semibold text-gray-800">#ORD1234567888</p>
+                        <p class="text-sm text-gray-600">Lê Văn C - 890,000đ</p>
+                    </div>
+                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-semibold">Completed</span>
+                </div>
+            </div>
+            <a asp-action="ManageOrders" class="block text-center mt-4 text-orange-500 hover:underline">
+                Xem tất cả →
+            </a>
+        </div>
+
+        <!-- Recent Reservations -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Đặt Bàn Mới</h3>
+            <div class="space-y-3">
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                    <div class="flex-1">
+                        <p class="font-semibold text-gray-800">Phạm Thị D</p>
+                        <p class="text-sm text-gray-600">COCÔTTE Sila - 4 người - 19:00</p>
+                    </div>
+                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-semibold">Confirmed</span>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                    <div class="flex-1">
+                        <p class="font-semibold text-gray-800">Hoàng Văn E</p>
+                        <p class="text-sm text-gray-600">COCÔTTE Ben Thanh - 6 người - 20:00</p>
+                    </div>
+                    <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-semibold">Pending</span>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded">
+                    <div class="flex-1">
+                        <p class="font-semibold text-gray-800">Vũ Thị F</p>
+                        <p class="text-sm text-gray-600">COCÔTTE DaKao - 2 người - 12:30</p>
+                    </div>
+                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-semibold">Confirmed</span>
+                </div>
+            </div>
+            <a asp-action="ManageReservations" class="block text-center mt-4 text-orange-500 hover:underline">
+                Xem tất cả →
+            </a>
+        </div>
+    </div>
+</div>
