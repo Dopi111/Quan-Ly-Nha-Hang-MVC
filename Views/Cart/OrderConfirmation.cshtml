@@ -1,0 +1,145 @@
+@model WebNhaHang.Models.Order
+
+@{
+    ViewData["Title"] = "Xác Nhận Đơn Hàng";
+}
+
+<div class="container mx-auto px-4 py-16">
+    <div class="max-w-2xl mx-auto">
+        <!-- Success Icon -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-4">
+                <svg class="w-12 h-12 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+            </div>
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">Đặt Hàng Thành Công!</h1>
+            <p class="text-gray-600">Cảm ơn bạn đã đặt hàng tại COCÔTTE</p>
+        </div>
+
+        <!-- Order Details -->
+        <div class="bg-white rounded-lg shadow-lg p-8 mb-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 pb-4 border-b">Chi Tiết Đơn Hàng</h2>
+
+            <div class="space-y-4">
+                <div class="flex justify-between">
+                    <span class="text-gray-600 font-semibold">Mã đơn hàng:</span>
+                    <span class="text-gray-800 font-bold">@Model.OrderNumber</span>
+                </div>
+
+                <div class="flex justify-between">
+                    <span class="text-gray-600 font-semibold">Tên khách hàng:</span>
+                    <span class="text-gray-800">@Model.CustomerName</span>
+                </div>
+
+                <div class="flex justify-between">
+                    <span class="text-gray-600 font-semibold">Email:</span>
+                    <span class="text-gray-800">@Model.CustomerEmail</span>
+                </div>
+
+                <div class="flex justify-between">
+                    <span class="text-gray-600 font-semibold">Số điện thoại:</span>
+                    <span class="text-gray-800">@Model.CustomerPhone</span>
+                </div>
+
+                <div class="pt-4 border-t">
+                    <span class="text-gray-600 font-semibold block mb-2">Địa chỉ giao hàng:</span>
+                    <p class="text-gray-800 bg-gray-50 p-3 rounded">@Model.DeliveryAddress</p>
+                </div>
+
+                <div class="flex justify-between">
+                    <span class="text-gray-600 font-semibold">Phương thức thanh toán:</span>
+                    <span class="text-gray-800">
+                        @(Model.PaymentMethod switch
+                        {
+                            "COD" => "Thanh toán khi nhận hàng",
+                            "BankTransfer" => "Chuyển khoản ngân hàng",
+                            "CreditCard" => "Thẻ tín dụng",
+                            "MoMo" => "Ví MoMo",
+                            _ => Model.PaymentMethod
+                        })
+                    </span>
+                </div>
+
+                <div class="flex justify-between pt-4 border-t">
+                    <span class="text-gray-600 font-semibold">Tổng thanh toán:</span>
+                    <span class="text-2xl font-bold text-orange-500">@Model.Total.ToString("#,##0") VNĐ</span>
+                </div>
+
+                <div class="flex justify-between">
+                    <span class="text-gray-600 font-semibold">Trạng thái:</span>
+                    <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold">
+                        Đang xử lý
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Tracking -->
+        <div class="bg-white rounded-lg shadow-lg p-8 mb-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Theo Dõi Đơn Hàng</h3>
+            <div class="flex justify-between items-center">
+                <div class="flex flex-col items-center">
+                    <div class="w-10 h-10 bg-green-500 text-white rounded-full flex items-center justify-center mb-2">✓</div>
+                    <span class="text-xs text-center">Đã đặt</span>
+                </div>
+                <div class="flex-1 h-1 bg-gray-300"></div>
+                <div class="flex flex-col items-center">
+                    <div class="w-10 h-10 bg-yellow-500 text-white rounded-full flex items-center justify-center mb-2">2</div>
+                    <span class="text-xs text-center">Đang chuẩn bị</span>
+                </div>
+                <div class="flex-1 h-1 bg-gray-300"></div>
+                <div class="flex flex-col items-center">
+                    <div class="w-10 h-10 bg-gray-300 text-white rounded-full flex items-center justify-center mb-2">3</div>
+                    <span class="text-xs text-center">Đang giao</span>
+                </div>
+                <div class="flex-1 h-1 bg-gray-300"></div>
+                <div class="flex flex-col items-center">
+                    <div class="w-10 h-10 bg-gray-300 text-white rounded-full flex items-center justify-center mb-2">4</div>
+                    <span class="text-xs text-center">Hoàn thành</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">📧 Các Bước Tiếp Theo</h3>
+            <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                    <span class="text-blue-500 mr-2">•</span>
+                    <span>Email xác nhận đã được gửi đến <strong>@Model.CustomerEmail</strong></span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-blue-500 mr-2">•</span>
+                    <span>Đơn hàng sẽ được chuẩn bị trong vòng 15-20 phút</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-blue-500 mr-2">•</span>
+                    <span>Thời gian giao hàng dự kiến: 45-60 phút</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-blue-500 mr-2">•</span>
+                    <span>Bạn sẽ nhận được thông báo khi tài xế bắt đầu giao hàng</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex gap-4">
+            <a asp-controller="Home" asp-action="Index" class="flex-1 bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 transition text-center font-semibold">
+                Về Trang Chủ
+            </a>
+            <a asp-controller="Menu" asp-action="Index" class="flex-1 bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition text-center font-semibold">
+                Tiếp Tục Mua Sắm
+            </a>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="mt-6 text-center text-gray-600">
+            <p>Cần hỗ trợ? Liên hệ với chúng tôi:</p>
+            <p class="font-semibold text-gray-800 mt-2">
+                📞 (028) 3825 1234 | 📧 info@cocotte.vn
+            </p>
+        </div>
+    </div>
+</div>

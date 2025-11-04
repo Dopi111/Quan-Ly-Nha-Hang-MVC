@@ -1,0 +1,166 @@
+@model WebNhaHang.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Hồ Sơ Cá Nhân - Profile";
+}
+
+<div class="container mx-auto px-4 py-16">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold text-gray-800 mb-8">Hồ Sơ Cá Nhân</h1>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <!-- Avatar -->
+                    <div class="text-center mb-6">
+                        <div class="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <span class="text-3xl text-gray-600">@Model.FullName.Substring(0, 1).ToUpper()</span>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-800">@Model.FullName</h2>
+                        <p class="text-gray-600 text-sm">@Model.Email</p>
+                    </div>
+
+                    <!-- Navigation -->
+                    <nav class="space-y-2">
+                        <a href="#profile" class="block px-4 py-2 bg-orange-50 text-orange-600 rounded font-semibold">
+                            Thông tin cá nhân
+                        </a>
+                        <a href="#orders" class="block px-4 py-2 hover:bg-gray-50 text-gray-700 rounded">
+                            Đơn hàng của tôi
+                        </a>
+                        <a href="#reservations" class="block px-4 py-2 hover:bg-gray-50 text-gray-700 rounded">
+                            Lịch đặt bàn
+                        </a>
+                        <a href="#favorites" class="block px-4 py-2 hover:bg-gray-50 text-gray-700 rounded">
+                            Món ăn yêu thích
+                        </a>
+                        <a href="#rewards" class="block px-4 py-2 hover:bg-gray-50 text-gray-700 rounded">
+                            Điểm thưởng
+                        </a>
+                    </nav>
+
+                    <!-- Logout -->
+                    <form asp-action="Logout" method="post" class="mt-6">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="w-full px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">
+                            Đăng Xuất
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="lg:col-span-2">
+                <!-- Profile Information -->
+                <div id="profile" class="bg-white rounded-lg shadow-lg p-8 mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Thông Tin Cá Nhân</h2>
+
+                    <form asp-action="UpdateProfile" method="post" class="space-y-4">
+                        @Html.AntiForgeryToken()
+
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Họ và Tên</label>
+                            <input asp-for="FullName" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Email</label>
+                            <input asp-for="Email" type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Số Điện Thoại</label>
+                            <input asp-for="Phone" type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Địa Chỉ</label>
+                            <textarea asp-for="Address" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+                        </div>
+
+                        <button type="submit" class="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition font-semibold">
+                            Cập Nhật Thông Tin
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Recent Orders -->
+                <div id="orders" class="bg-white rounded-lg shadow-lg p-8 mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Đơn Hàng Gần Đây</h2>
+
+                    <div class="space-y-4">
+                        <!-- Sample Order -->
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <h3 class="font-bold text-gray-800">#ORD1234567890</h3>
+                                    <p class="text-sm text-gray-600">15/03/2024 - 14:30</p>
+                                </div>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
+                                    Đã giao
+                                </span>
+                            </div>
+                            <div class="text-gray-700 mb-2">
+                                <p>2 x Boeuf Bourguignon</p>
+                                <p>1 x Coq au Vin</p>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-orange-500">730,000 VNĐ</span>
+                                <a href="#" class="text-sm text-orange-500 hover:underline">Xem chi tiết</a>
+                            </div>
+                        </div>
+
+                        <div class="text-center py-4">
+                            <a href="#" class="text-orange-500 hover:underline">Xem tất cả đơn hàng →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reservations -->
+                <div id="reservations" class="bg-white rounded-lg shadow-lg p-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Lịch Đặt Bàn</h2>
+
+                    <div class="space-y-4">
+                        <!-- Sample Reservation -->
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <h3 class="font-bold text-gray-800">COCÔTTE Sila</h3>
+                                    <p class="text-sm text-gray-600">20/03/2024 - 19:00</p>
+                                    <p class="text-sm text-gray-600">4 người</p>
+                                </div>
+                                <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold">
+                                    Đã xác nhận
+                                </span>
+                            </div>
+                            <div class="flex gap-2 mt-4">
+                                <button class="flex-1 px-4 py-2 border border-gray-300 rounded hover:bg-gray-50 text-sm">
+                                    Hủy đặt bàn
+                                </button>
+                                <button class="flex-1 px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 text-sm">
+                                    Xem chi tiết
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="text-center py-4">
+                            <a asp-controller="Reservation" asp-action="Index" class="text-orange-500 hover:underline">Đặt bàn mới →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

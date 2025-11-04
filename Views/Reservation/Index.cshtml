@@ -1,0 +1,189 @@
+@model WebNhaHang.Models.Reservation
+
+@{
+    ViewData["Title"] = "Đặt Bàn - Reservation";
+}
+
+@await Html.PartialAsync("_Hero", new HeroViewModel
+{
+    Title = "Đặt Bàn Tại COCÔTTE",
+    Subtitle = "Trải nghiệm ẩm thực Pháp đặc sắc cùng gia đình và bạn bè",
+    BackgroundImageUrl = "/images/hero/reservation-hero.jpg"
+})
+
+<div class="container mx-auto px-4 py-16">
+    <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">Thông Tin Đặt Bàn</h2>
+            <p class="text-gray-600 mb-8">
+                Vui lòng điền đầy đủ thông tin bên dưới. Chúng tôi sẽ liên hệ với bạn trong vòng 24 giờ để xác nhận đặt bàn.
+            </p>
+
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
+                    @TempData["SuccessMessage"]
+                </div>
+            }
+
+            <form asp-action="Create" method="post" class="space-y-6">
+                @Html.AntiForgeryToken()
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Customer Name -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            Họ và Tên <span class="text-red-500">*</span>
+                        </label>
+                        <input asp-for="CustomerName" type="text" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                               placeholder="Nguyễn Văn A">
+                        <span asp-validation-for="CustomerName" class="text-red-500 text-sm"></span>
+                    </div>
+
+                    <!-- Customer Phone -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            Số Điện Thoại <span class="text-red-500">*</span>
+                        </label>
+                        <input asp-for="CustomerPhone" type="tel" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                               placeholder="0123456789">
+                        <span asp-validation-for="CustomerPhone" class="text-red-500 text-sm"></span>
+                    </div>
+
+                    <!-- Customer Email -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            Email <span class="text-red-500">*</span>
+                        </label>
+                        <input asp-for="CustomerEmail" type="email" required
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                               placeholder="email@example.com">
+                        <span asp-validation-for="CustomerEmail" class="text-red-500 text-sm"></span>
+                    </div>
+
+                    <!-- Number of Guests -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            Số Người <span class="text-red-500">*</span>
+                        </label>
+                        <select asp-for="NumberOfGuests" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                            <option value="">Chọn số người</option>
+                            @for (int i = 1; i <= 20; i++)
+                            {
+                                <option value="@i">@i người</option>
+                            }
+                        </select>
+                        <span asp-validation-for="NumberOfGuests" class="text-red-500 text-sm"></span>
+                    </div>
+
+                    <!-- Reservation Date -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            Ngày Đặt Bàn <span class="text-red-500">*</span>
+                        </label>
+                        <input asp-for="ReservationDate" type="date" required
+                               min="@DateTime.Now.ToString("yyyy-MM-dd")"
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                        <span asp-validation-for="ReservationDate" class="text-red-500 text-sm"></span>
+                    </div>
+
+                    <!-- Reservation Time -->
+                    <div>
+                        <label class="block text-gray-700 font-semibold mb-2">
+                            Giờ Đặt Bàn <span class="text-red-500">*</span>
+                        </label>
+                        <select asp-for="ReservationTime" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                            <option value="">Chọn giờ</option>
+                            <option value="10:00:00">10:00</option>
+                            <option value="10:30:00">10:30</option>
+                            <option value="11:00:00">11:00</option>
+                            <option value="11:30:00">11:30</option>
+                            <option value="12:00:00">12:00</option>
+                            <option value="12:30:00">12:30</option>
+                            <option value="13:00:00">13:00</option>
+                            <option value="13:30:00">13:30</option>
+                            <option value="14:00:00">14:00</option>
+                            <option value="17:00:00">17:00</option>
+                            <option value="17:30:00">17:30</option>
+                            <option value="18:00:00">18:00</option>
+                            <option value="18:30:00">18:30</option>
+                            <option value="19:00:00">19:00</option>
+                            <option value="19:30:00">19:30</option>
+                            <option value="20:00:00">20:00</option>
+                            <option value="20:30:00">20:30</option>
+                            <option value="21:00:00">21:00</option>
+                        </select>
+                        <span asp-validation-for="ReservationTime" class="text-red-500 text-sm"></span>
+                    </div>
+                </div>
+
+                <!-- Location -->
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">
+                        Chi Nhánh <span class="text-red-500">*</span>
+                    </label>
+                    <select asp-for="LocationId" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
+                        <option value="">Chọn chi nhánh</option>
+                        @foreach (var location in ViewBag.Locations as List<WebNhaHang.Models.Location>)
+                        {
+                            <option value="@location.Id">@location.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="LocationId" class="text-red-500 text-sm"></span>
+                </div>
+
+                <!-- Special Requests -->
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-2">
+                        Yêu Cầu Đặc Biệt
+                    </label>
+                    <textarea asp-for="SpecialRequests" rows="4"
+                              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                              placeholder="Vị trí ngồi ưa thích, dị ứng thực phẩm, dịp đặc biệt..."></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="flex gap-4">
+                    <button type="submit" class="flex-1 bg-orange-500 text-white px-8 py-4 rounded-lg hover:bg-orange-600 transition font-semibold text-lg">
+                        Xác Nhận Đặt Bàn
+                    </button>
+                    <a asp-controller="Home" asp-action="Index" class="flex-1 bg-gray-300 text-gray-700 px-8 py-4 rounded-lg hover:bg-gray-400 transition font-semibold text-lg text-center">
+                        Hủy
+                    </a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Info Section -->
+        <div class="mt-8 bg-orange-50 border border-orange-200 rounded-lg p-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">📝 Lưu Ý Khi Đặt Bàn</h3>
+            <ul class="space-y-2 text-gray-700">
+                <li class="flex items-start">
+                    <span class="text-orange-500 mr-2">•</span>
+                    <span>Đặt bàn trước ít nhất 2 giờ để đảm bảo chỗ ngồi tốt nhất</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-orange-500 mr-2">•</span>
+                    <span>Với nhóm từ 10 người trở lên, vui lòng gọi trực tiếp để được tư vấn</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-orange-500 mr-2">•</span>
+                    <span>Quý khách vui lòng đến đúng giờ để không mất chỗ đã đặt</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-orange-500 mr-2">•</span>
+                    <span>Nếu cần thay đổi hoặc hủy đặt bàn, vui lòng liên hệ trước ít nhất 4 giờ</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
