@@ -1,48 +1,225 @@
 @{
-    ViewData["Title"] = "Our Story";
+    ViewData["Title"] = "Câu Chuyện Của Chúng Tôi - Our Story";
 }
-@await Html.PartialAsync("_Hero", new WebNhaHang.Models.HeroViewModel{ Title = "OUR STORY", Subtitle = "Hành trình của Cocotte" })
 
-<div class="container my-4">
-    <h2 class="border-bottom pb-2" style="color:#1a3a52;">ABOUT COCOTTE</h2>
-    <div class="row g-4 align-items-center">
-        <div class="col-md-6">
-            <div class="bg-secondary-subtle d-flex align-items-center justify-content-center" style="height:300px;">About Image</div>
-        </div>
-        <div class="col-md-6">
-            <p class="mb-3" style="line-height:1.8;">Nơi hương vị Pháp được gìn giữ, sáng tạo và phục vụ bằng cả đam mê...</p>
-            <p style="line-height:1.8;">Cocotte là một nhà hàng Pháp chuyên phục vụ các món ăn truyền thống Pháp với chất lượng cao nhất.</p>
+<!-- Hero Section -->
+<div class="relative bg-cover bg-center flex flex-col justify-end min-h-[60vh] md:min-h-[70vh]"
+     style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 40%), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070');">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+        <h1 class="text-white text-4xl md:text-6xl font-black tracking-tight">Hành Trình Của COCÔTTE</h1>
+        <p class="text-white/90 text-lg md:text-xl mt-4 max-w-2xl mx-auto">Câu chuyện về đam mê, tâm huyết và tình yêu ẩm thực Pháp</p>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+
+    <!-- Intro Text -->
+    <div class="text-center mb-16">
+        <p class="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            Tất cả bắt đầu từ một tầm nhìn đơn giản: tạo ra một nơi mà thức ăn không chỉ được thưởng thức,
+            mà được <span class="font-bold text-orange-500">trải nghiệm</span>. Nơi mà mỗi nguyên liệu kể một câu chuyện,
+            và mỗi món ăn là sự tôn vinh hương vị, đam mê và cộng đồng.
+        </p>
+    </div>
+
+    <!-- Timeline Section -->
+    <div class="mb-20">
+        <h2 class="text-3xl font-bold text-gray-800 text-center mb-12">Lịch Sử Phát Triển</h2>
+
+        <div class="grid grid-cols-[auto_1fr] gap-x-4 md:gap-x-6">
+
+            <!-- Timeline Item 1 -->
+            <div class="flex flex-col items-center gap-2 pt-2">
+                <div class="bg-orange-500 rounded-full w-6 h-6 flex-shrink-0"></div>
+                <div class="w-0.5 bg-gray-300 grow"></div>
+            </div>
+            <div class="pb-12">
+                <p class="text-xl font-bold text-gray-800 mb-2">Khởi Đầu (2015)</p>
+                <p class="text-gray-600 leading-relaxed">
+                    Người sáng lập của chúng tôi, được truyền cảm hứng từ những bistro sôi động ở Paris,
+                    đã mơ ước mang năng lượng rực rỡ và sự xuất sắc về ẩm thực đó trở về quê nhà.
+                    COCÔTTE đầu tiên mở cửa tại một con hẻm nhỏ ẩn mình, nhanh chóng trở thành
+                    điểm đến yêu thích của người dân địa phương.
+                </p>
+            </div>
+
+            <!-- Timeline Item 2 -->
+            <div class="flex flex-col items-center gap-2">
+                <div class="w-0.5 bg-gray-300 grow"></div>
+                <div class="bg-orange-500 rounded-full w-6 h-6 flex-shrink-0"></div>
+                <div class="w-0.5 bg-gray-300 grow"></div>
+            </div>
+            <div class="pb-12">
+                <p class="text-xl font-bold text-gray-800 mb-2">Triết Lý Của Chúng Tôi</p>
+                <p class="text-gray-600 leading-relaxed">
+                    Chúng tôi tin vào sức mạnh của nguyên liệu tươi sống, có nguồn gốc địa phương.
+                    Triết lý của chúng tôi rất đơn giản: tôn vinh người nông dân, tôn trọng sản phẩm,
+                    và tạo ra những món ăn vừa sáng tạo vừa vượt thời gian.
+                    Đó là cam kết bạn có thể cảm nhận trong từng miếng ăn.
+                </p>
+            </div>
+
+            <!-- Timeline Item 3 -->
+            <div class="flex flex-col items-center gap-2">
+                <div class="w-0.5 bg-gray-300 grow"></div>
+                <div class="bg-orange-500 rounded-full w-6 h-6 flex-shrink-0"></div>
+            </div>
+            <div class="pb-8">
+                <p class="text-xl font-bold text-gray-800 mb-2">Tương Lai</p>
+                <p class="text-gray-600 leading-relaxed">
+                    Khi nhìn về phía trước, câu chuyện của chúng tôi tiếp tục được viết tiếp.
+                    Chúng tôi hào hứng để tiếp tục đổi mới, sáng tạo và chia sẻ đam mê với bạn.
+                    Chúng tôi mời bạn trở thành một phần trong hành trình của chúng tôi,
+                    từng bữa ăn ngon một.
+                </p>
+            </div>
         </div>
     </div>
 
-    <h2 class="mt-5 border-bottom pb-2" style="color:#1a3a52;">OUR VALUES</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-3 mt-1">
-        <div class="col">
-            <div class="p-3 rounded" style="background:#f9f9f9;">
-                <h5 class="text-danger">Quality</h5>
-                <div class="small">Chúng tôi sử dụng nguyên liệu tốt nhất từ Pháp và địa phương.</div>
-            </div>
+    <!-- Full-Width Image Break -->
+    <div class="my-16 md:my-24 -mx-4 sm:-mx-6 lg:-mx-8">
+        <div class="h-80 md:h-96 bg-cover bg-center rounded-none sm:rounded-xl"
+             style="background-image: url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=2070');">
         </div>
-        <div class="col">
-            <div class="p-3 rounded" style="background:#f9f9f9;">
-                <h5 class="text-danger">Tradition</h5>
-                <div class="small">Giữ gìn những công thức nấu ăn truyền thống Pháp.</div>
+    </div>
+
+    <!-- Quote Block -->
+    <div class="text-center my-16 md:my-24">
+        <blockquote class="text-2xl md:text-4xl font-bold italic text-gray-800 leading-tight md:leading-tight">
+            "Ẩm thực là ngôn ngữ chung của chúng ta, một trải nghiệm toàn cầu.
+            Với chúng tôi, đó là việc làm cho trải nghiệm đó trở nên khó quên."
+        </blockquote>
+        <cite class="block text-gray-600 mt-4 not-italic text-lg">— Chef Jean-Pierre, Nhà Sáng Lập & Bếp Trưởng</cite>
+    </div>
+
+    <!-- Our Values -->
+    <div class="my-16 md:my-24">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12">Giá Trị Cốt Lõi</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- Value 1 -->
+            <div class="bg-orange-50 p-8 rounded-xl text-center hover:shadow-lg transition-shadow duration-300">
+                <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Chất Lượng</h3>
+                <p class="text-gray-600">
+                    Chúng tôi chỉ sử dụng nguyên liệu tốt nhất từ Pháp và từ các nông trại địa phương,
+                    đảm bảo mỗi món ăn đều đạt tiêu chuẩn cao nhất.
+                </p>
             </div>
-        </div>
-        <div class="col">
-            <div class="p-3 rounded" style="background:#f9f9f9;">
-                <h5 class="text-danger">Experience</h5>
-                <div class="small">Tạo ra những trải nghiệm ẩm thực không quên.</div>
+
+            <!-- Value 2 -->
+            <div class="bg-orange-50 p-8 rounded-xl text-center hover:shadow-lg transition-shadow duration-300">
+                <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Truyền Thống</h3>
+                <p class="text-gray-600">
+                    Giữ gìn và tôn vinh những công thức nấu ăn truyền thống Pháp,
+                    được truyền từ thế hệ này sang thế hệ khác.
+                </p>
+            </div>
+
+            <!-- Value 3 -->
+            <div class="bg-orange-50 p-8 rounded-xl text-center hover:shadow-lg transition-shadow duration-300">
+                <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Trải Nghiệm</h3>
+                <p class="text-gray-600">
+                    Tạo ra những trải nghiệm ẩm thực khó quên, nơi mỗi bữa ăn là một hành trình
+                    khám phá hương vị và văn hóa.
+                </p>
             </div>
         </div>
     </div>
 
-    <h2 class="mt-5 border-bottom pb-2" style="color:#1a3a52;">OUR TEAM</h2>
-    <div class="row row-cols-1 row-cols-md-4 g-3 mt-1">
-        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Team Member"},{"CardTitle","Chef Name"},{"Description","Head Chef"} })</div>
-        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Team Member"},{"CardTitle","Staff Name"},{"Description","Sous Chef"} })</div>
-        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Team Member"},{"CardTitle","Staff Name"},{"Description","Manager"} })</div>
-        <div class="col">@await Html.PartialAsync("_Card", new ViewDataDictionary(ViewData){ {"ImageText","Team Member"},{"CardTitle","Staff Name"},{"Description","Sommelier"} })</div>
+    <!-- Our Team -->
+    <div class="my-16 md:my-24">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-4">Đội Ngũ Của Chúng Tôi</h2>
+        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Đội ngũ tài năng và đam mê, luôn sẵn sàng mang đến cho bạn những trải nghiệm ẩm thực tuyệt vời nhất
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <!-- Team Member 1 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div class="h-64 bg-gray-200 flex items-center justify-center">
+                    <span class="text-gray-400 text-4xl">👨‍🍳</span>
+                </div>
+                <div class="p-6 text-center">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Chef Pierre Dubois</h3>
+                    <p class="text-orange-500 font-semibold mb-2">Bếp Trưởng</p>
+                    <p class="text-gray-600 text-sm">15 năm kinh nghiệm tại các nhà hàng Michelin</p>
+                </div>
+            </div>
+
+            <!-- Team Member 2 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div class="h-64 bg-gray-200 flex items-center justify-center">
+                    <span class="text-gray-400 text-4xl">👨‍🍳</span>
+                </div>
+                <div class="p-6 text-center">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Marie Laurent</h3>
+                    <p class="text-orange-500 font-semibold mb-2">Sous Chef</p>
+                    <p class="text-gray-600 text-sm">Chuyên gia về pastry và desserts</p>
+                </div>
+            </div>
+
+            <!-- Team Member 3 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div class="h-64 bg-gray-200 flex items-center justify-center">
+                    <span class="text-gray-400 text-4xl">👔</span>
+                </div>
+                <div class="p-6 text-center">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Thomas Nguyen</h3>
+                    <p class="text-orange-500 font-semibold mb-2">Quản Lý Nhà Hàng</p>
+                    <p class="text-gray-600 text-sm">Đảm bảo trải nghiệm hoàn hảo cho khách hàng</p>
+                </div>
+            </div>
+
+            <!-- Team Member 4 -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div class="h-64 bg-gray-200 flex items-center justify-center">
+                    <span class="text-gray-400 text-4xl">🍷</span>
+                </div>
+                <div class="p-6 text-center">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Sophie Chen</h3>
+                    <p class="text-orange-500 font-semibold mb-2">Sommelier</p>
+                    <p class="text-gray-600 text-sm">Chuyên gia về rượu vang Pháp</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call-to-Action Section -->
+<div class="bg-gradient-to-r from-orange-500 to-orange-600 py-16 md:py-24">
+    <div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
+            Trở Thành Một Phần Câu Chuyện Của Chúng Tôi
+        </h2>
+        <p class="mt-4 text-lg text-white/90 max-w-2xl mx-auto">
+            Trải nghiệm đam mê của chúng tôi một cách trực tiếp. Hãy đến với chúng tôi cho một bữa ăn
+            và để chúng tôi chia sẻ tình yêu của mình dành cho ẩm thực với bạn.
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a asp-controller="Reservation" asp-action="Index" class="w-full sm:w-auto bg-white text-orange-600 px-8 py-4 rounded-lg font-bold tracking-wide hover:bg-gray-100 transition-colors text-center">
+                Đặt Bàn Ngay
+            </a>
+            <a asp-controller="Menu" asp-action="Index" class="w-full sm:w-auto bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold tracking-wide hover:bg-white hover:text-orange-600 transition-colors text-center">
+                Xem Thực Đơn
+            </a>
+        </div>
     </div>
 </div>
 
